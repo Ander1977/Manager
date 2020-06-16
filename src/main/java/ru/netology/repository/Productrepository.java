@@ -1,8 +1,8 @@
 package ru.netology.repository;
 
-import ru.netology.domaun.Book;
-import ru.netology.domaun.Product;
-import ru.netology.domaun.Smartphone;
+import ru.netology.domain.Book;
+import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
 
 public class Productrepository {
 

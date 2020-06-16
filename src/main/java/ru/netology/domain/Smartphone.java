@@ -1,4 +1,4 @@
-package ru.netology.domaun;
+package ru.netology.domain;
 
 
 public class Smartphone extends Product {
