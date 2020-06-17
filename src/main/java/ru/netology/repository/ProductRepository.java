@@ -4,7 +4,7 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 
-public class Productrepository {
+public class ProductRepository {
 
     private Book[] books = new Book[0];
     private Smartphone[] smartphones = new Smartphone[0];
