@@ -109,22 +109,6 @@ class ProductManagerTest {
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    void  setBookId() {
-        Product product = new Book();
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            book.setId(3);
-        }
-    }
-
-    @Test
-    void  setSmartphoneId() {
-        Product product = new Smartphone();
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            smartphone.setId(1);
-        }
-    }
 
 }
+
