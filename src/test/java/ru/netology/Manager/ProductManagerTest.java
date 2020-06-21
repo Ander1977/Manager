@@ -12,9 +12,9 @@ import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
+
 
 class ProductManagerTest {
     @Mock
@@ -22,65 +22,109 @@ class ProductManagerTest {
 
     @InjectMocks
     ProductManager manager;
+        Smartphone first = new Smartphone(1, "Nokia 7plus", 17990, "Finland");
+        Smartphone second = new Smartphone(2, "Samsung S10", 40000, "Korea");
+        Smartphone third = new Smartphone(3, "Google Pixel 3", 50000, "U.S.A");
+        Book one = new Book(1, "Дунайский лоцман", 450, "Ж.Верн");
+        Book two = new Book(2, "Двенадцать стульев", 200, "И.Ильф,Е.Петров");
+        Book three = new Book(3, "Шерлок Холмс", 360, "А.К.Дойл");
 
-    Smartphone first = new Smartphone(1, "Nokia 7plus", 17990, "Finland");
-    Smartphone second = new Smartphone(2, "Samsung S10", 40000, "Korea");
-    Smartphone third = new Smartphone(3, "Google Pixel 3", 50000, "U.S.A");
-    Book one = new Book(1,"Дунайский лоцман", 450, "Ж.Верн");
-    Book two = new Book(2, "Двенадцать стульев", 200, "И.Ильф,Е.Петров");
-    Book three = new Book(3, "Шерлок Холмс", 360, "А.К.Дойл");
 
 
     @Test
     void addSmartphone() {
         Product[] returned = new Product[]{first};
         doReturn(returned).when(repository).findAll();
-        manager.add(first);
         Product[] expected = new Product[]{first};
-        Product[] actual = repository.findAll();
+        Product[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
-
     }
 
     @Test
     void addBook() {
         Product[] returned = new Product[]{one};
         doReturn(returned).when(repository).findAll();
-        manager.add(one);
         Product[] expected = new Product[]{one};
-        Product[] actual = repository.findAll();
+        Product[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
-
     }
 
     @Test
     void addAllSmartphone() {
         Product[] returned = new Product[]{first, second, third};
         doReturn(returned).when(repository).findAll();
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        Product[] expected = new Product[]{first, second, third};
-        Product[] actual = repository.findAll();
+        Product[] expected = new Product[]{third, second, first};
+        Product[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
     }
 
     @Test
     void addAllBook() {
         Product[] returned = new Product[]{one, two, three};
         doReturn(returned).when(repository).findAll();
-        manager.add(one);
-        manager.add(two);
-        manager.add(three);
-        Product[] expected = new Product[]{one, two, three};
-        Product[] actual = repository.findAll();
+        Product[] expected = new Product[]{three, two, one};
+        Product[] actual =  manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
     }
 
 
+    @Test
+    void findByNameSmartphone() {
+        String nameSmartphone = "Nokia 7plus";
+        Product[] returned = new Product[]{first};
+        doReturn(returned).when(repository).findAll();
+        Product[] actual = new Product[]{first};
+        Product[] expected = manager.searchBy(nameSmartphone);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void findByNameBook() {
+        String nameBook = "Дунайский лоцман";
+        Product[] returned = new Product[]{one};
+        doReturn(returned).when(repository).findAll();
+        Product[] actual = new Product[]{one};
+        Product[] expected = manager.searchBy(nameBook);
+        assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
+    void findByAuthor() {
+        String author = "И.Ильф,Е.Петров";
+        Product[] returned = new Product[]{two};
+        doReturn(returned).when(repository).findAll();
+        Product[] expected = new Product[]{two};
+        Product[] actual =  manager.searchBy(author);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void findByManufactured() {
+        String manufactured = "U.S.A";
+        Product[] returned = new Product[]{third};
+        doReturn(returned).when(repository).findAll();
+        Product[] expected = new Product[]{third};
+        Product[] actual =  manager.searchBy(manufactured);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void  setBookId() {
+        Product product = new Book();
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            book.setId(3);
+        }
+    }
+
+    @Test
+    void  setSmartphoneId() {
+        Product product = new Smartphone();
+        if (product instanceof Smartphone) {
+            Smartphone smartphone = (Smartphone) product;
+            smartphone.setId(1);
+        }
+    }
 
 }

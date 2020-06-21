@@ -4,22 +4,22 @@ package ru.netology.domain;
 import java.util.Objects;
 
 public class Smartphone extends Product {
-    private String manufacturer;
+    private String manufactured;
 
     public Smartphone() {
     }
 
-    public Smartphone(int id, String name, int price, String manufacturer) {
+    public Smartphone(int id, String name, int price, String manufactured) {
         super(id, name, price);
-        this.manufacturer = manufacturer;
+        this.manufactured = manufactured;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufactured() {
+        return manufactured;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufactured(String manufactured) {
+        this.manufactured = manufactured;
     }
 
     @Override
@@ -28,18 +28,18 @@ public class Smartphone extends Product {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Smartphone that = (Smartphone) o;
-        return manufacturer.equals(that.manufacturer);
+        return manufactured.equals(that.manufactured);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), manufacturer);
+        return Objects.hash(super.hashCode(), manufactured);
     }
 
     @Override
     public String toString() {
         return "Smartphone{" +
-                "manufacturer='" + manufacturer + '\'' +
+                "manufacturer='" + manufactured + '\'' +
                 '}';
     }
 }
