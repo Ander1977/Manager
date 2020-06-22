@@ -127,4 +127,24 @@ class ProductManagerTest {
         }
     }
 
+    @Test
+    void bookNameNotFind() {
+        String nameBook = "Война и мир";
+        Product[] returned = new Product[]{one};
+        doReturn(returned).when(repository).findAll();
+        Product[] actual = new Product[]{};
+        Product[] expected =  manager.searchBy(nameBook);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void smartphoneNameNotFind() {
+        String nameSmartphone = "Motorola";
+        Product[] returned = new Product[]{third};
+        doReturn(returned).when(repository).findAll();
+        Product[] actual = new Product[]{};
+        Product[] expected =  manager.searchBy(nameSmartphone);
+        assertArrayEquals(expected, actual);
+    }
+
 }
