@@ -73,8 +73,8 @@ class ProductManagerTest {
         String nameSmartphone = "Nokia 7plus";
         Product[] returned = new Product[]{first};
         doReturn(returned).when(repository).findAll();
-        Product[] actual = new Product[]{first};
-        Product[] expected = manager.searchBy(nameSmartphone);
+        Product[] expected = new Product[]{first};
+        Product[] actual = manager.searchBy(nameSmartphone);
         assertArrayEquals(expected, actual);
     }
 
@@ -83,8 +83,8 @@ class ProductManagerTest {
         String nameBook = "Дунайский лоцман";
         Product[] returned = new Product[]{one};
         doReturn(returned).when(repository).findAll();
-        Product[] actual = new Product[]{one};
-        Product[] expected = manager.searchBy(nameBook);
+        Product[] expected = new Product[]{one};
+        Product[] actual = manager.searchBy(nameBook);
         assertArrayEquals(expected, actual);
     }
 
@@ -95,7 +95,7 @@ class ProductManagerTest {
         Product[] returned = new Product[]{two};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{two};
-        Product[] actual =  manager.searchBy(author);
+        Product[] actual = manager.searchBy(author);
         assertArrayEquals(expected, actual);
     }
 
@@ -105,7 +105,7 @@ class ProductManagerTest {
         Product[] returned = new Product[]{third};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{third};
-        Product[] actual =  manager.searchBy(manufactured);
+        Product[] actual = manager.searchBy(manufactured);
         assertArrayEquals(expected, actual);
     }
 
@@ -114,8 +114,8 @@ class ProductManagerTest {
         String nameBook = "Война и мир";
         Product[] returned = new Product[]{one};
         doReturn(returned).when(repository).findAll();
-        Product[] actual = new Product[]{};
-        Product[] expected =  manager.searchBy(nameBook);
+        Product[] expected = new Product[]{};
+        Product[] actual = manager.searchBy(nameBook);
         assertArrayEquals(expected, actual);
     }
 
@@ -124,8 +124,8 @@ class ProductManagerTest {
         String nameSmartphone = "Motorola";
         Product[] returned = new Product[]{third};
         doReturn(returned).when(repository).findAll();
-        Product[] actual = new Product[]{};
-        Product[] expected =  manager.searchBy(nameSmartphone);
+        Product[] expected = new Product[]{};
+        Product[] actual = manager.searchBy(nameSmartphone);
         assertArrayEquals(expected, actual);
     }
 
