@@ -1,4 +1,4 @@
-package ru.netology.Manager;
+package ru.netology.manager;
 
 
 import ru.netology.domain.Book;
@@ -47,8 +47,8 @@ public class ProductManager {
             if (book.getAuthor().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
         }
+
         if (product instanceof Smartphone) {
             Smartphone smartphone = (Smartphone) product;
             if (smartphone.getName().equalsIgnoreCase(search)) {

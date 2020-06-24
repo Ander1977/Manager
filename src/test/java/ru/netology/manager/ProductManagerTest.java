@@ -1,4 +1,4 @@
-package ru.netology.Manager;
+package ru.netology.manager;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,21 +14,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
-
-
 class ProductManagerTest {
     @Mock
     ProductRepository repository;
 
     @InjectMocks
     ProductManager manager;
-        Smartphone first = new Smartphone(1, "Nokia 7plus", 17990, "Finland");
-        Smartphone second = new Smartphone(2, "Samsung S10", 40000, "Korea");
-        Smartphone third = new Smartphone(3, "Google Pixel 3", 50000, "U.S.A");
-        Book one = new Book(1, "Дунайский лоцман", 450, "Ж.Верн");
-        Book two = new Book(2, "Двенадцать стульев", 200, "И.Ильф,Е.Петров");
-        Book three = new Book(3, "Шерлок Холмс", 360, "А.К.Дойл");
-
+    Smartphone first = new Smartphone(1, "Nokia 7plus", 17990, "Finland");
+    Smartphone second = new Smartphone(2, "Samsung S10", 40000, "Korea");
+    Smartphone third = new Smartphone(3, "Google Pixel 3", 50000, "U.S.A");
+    Book one = new Book(1, "Дунайский лоцман", 450, "Ж.Верн");
+    Book two = new Book(2, "Двенадцать стульев", 200, "И.Ильф,Е.Петров");
+    Book three = new Book(3, "Шерлок Холмс", 360, "А.К.Дойл");
 
 
     @Test
@@ -63,7 +60,7 @@ class ProductManagerTest {
         Product[] returned = new Product[]{one, two, three};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{three, two, one};
-        Product[] actual =  manager.getAll();
+        Product[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
@@ -74,7 +71,7 @@ class ProductManagerTest {
         Product[] returned = new Product[]{first};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{first};
-        Product[] actual =  manager.searchBy(nameSmartphone);
+        Product[] actual = manager.searchBy(nameSmartphone);
         assertArrayEquals(expected, actual);
     }
 
@@ -95,7 +92,7 @@ class ProductManagerTest {
         Product[] returned = new Product[]{two};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{two};
-        Product[] actual =  manager.searchBy(author);
+        Product[] actual = manager.searchBy(author);
         assertArrayEquals(expected, actual);
     }
 
@@ -105,26 +102,8 @@ class ProductManagerTest {
         Product[] returned = new Product[]{third};
         doReturn(returned).when(repository).findAll();
         Product[] expected = new Product[]{third};
-        Product[] actual =  manager.searchBy(manufactured);
+        Product[] actual = manager.searchBy(manufactured);
         assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    void  setBookId() {
-        Product product = new Book();
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            book.setId(3);
-        }
-    }
-
-    @Test
-    void  setSmartphoneId() {
-        Product product = new Smartphone();
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            smartphone.setId(3);
-        }
     }
 
     @Test
